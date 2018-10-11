@@ -1,3 +1,4 @@
+//compile me with: g++ printArraysPhaseI.C -o printArraysPhaseI.exec `root-config --glibs --cflags`
 #include <iostream>
 #include <fstream>
 #include <math.h>
@@ -27,7 +28,7 @@ int main()
     shapeEBFile.close();
 
     ofstream shapeEEFile;
-    shapeEEFile.open("EE_simpulseshape.txt");
+    shapeEEFile.open("EE_SimpulseShape.txt");
 
     for(int i=0; i<500; ++i)
     {
