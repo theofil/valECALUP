@@ -80,8 +80,12 @@ rt.gStyle.SetOptTitle(0)
 ### Setting paths + filenames
 cmsswFile_ref = "printCMSSWfiles/TXTs/EE_SimPulseShape.txt"
 cmsswFile_p23ns = "printCMSSWfiles/TXTs/EE_SimPulseShape_p23ns.txt"
+cmsswFile_p20ns = "printCMSSWfiles/TXTs/EE_SimPulseShape_p20ns.txt"
+cmsswFile_p17ns = "printCMSSWfiles/TXTs/EE_SimPulseShape_p17ns.txt"
 marray_ref = "../ROOTs/PhaseI_m_array/EEShape.txt"
 marray_p23ns = "../ROOTs/PhaseI_m_array/m_array_EE_SimPulseShape_p23ns.txt"
+marray_p20ns = "../ROOTs/PhaseI_m_array/m_array_EE_SimPulseShape_p20ns.txt"
+marray_p17ns = "../ROOTs/PhaseI_m_array/m_array_EE_SimPulseShape_p17ns.txt"
 
 
 ### make graph from TXT data for EE Phase I
@@ -89,8 +93,12 @@ thresh_EE = 0.00025
 time_interval = 1.0
 gr_EE_ref     = graphFromTXT(cmsswFile_ref, thresh_EE, 1.0)
 gr_EE_p23ns   = graphFromTXT(cmsswFile_p23ns, thresh_EE, 1.0)
+gr_EE_p20ns   = graphFromTXT(cmsswFile_p20ns, thresh_EE, 1.0)
+gr_EE_p17ns   = graphFromTXT(cmsswFile_p17ns, thresh_EE, 1.0)
 gr_EE_marray_ref  = graphFromTXT2(marray_ref, thresh_EE, 0.1)
 gr_EE_marray_p23ns  = graphFromTXT2(marray_p23ns, thresh_EE, 0.1)
+gr_EE_marray_p20ns  = graphFromTXT2(marray_p20ns, thresh_EE, 0.1)
+gr_EE_marray_p17ns  = graphFromTXT2(marray_p17ns, thresh_EE, 0.1)
 
 
 
@@ -101,12 +109,16 @@ gr_EE_marray_p23ns  = graphFromTXT2(marray_p23ns, thresh_EE, 0.1)
 
 c11 = rt.TCanvas("c11","c11") 
 gr_EE_ref.SetMarkerColor(rt.kBlue)
+gr_EE_p20ns.SetMarkerColor(rt.kGreen)
+gr_EE_p17ns.SetMarkerColor(rt.kMagenta)
 gr_EE_ref.Draw("AP")
 gr_EE_ref.GetXaxis().SetRangeUser(0,150)
 gr_EE_p23ns.Draw("P SAME")
+gr_EE_p20ns.Draw("P SAME")
+gr_EE_p17ns.Draw("P SAME")
 #gr_EE_marray_ref.Draw("same")
 #gr_EE_marray_p23ns.Draw("same")
-leg1 = rt.TLegend(0.48,0.18,0.91,0.3)
+leg1 = rt.TLegend(0.48,0.18,0.91,0.4)
 leg1.SetTextSize(28)
 leg1.SetTextFont(43)
 leg1.SetFillColor(rt.kWhite)
@@ -114,6 +126,8 @@ leg1.SetFillStyle(0)
 leg1.SetBorderSize(0)
 leg1.AddEntry(gr_EE_ref, "EE pulse","p")
 leg1.AddEntry(gr_EE_p23ns, "EE pulse + 23ns","p")
+leg1.AddEntry(gr_EE_p20ns, "EE pulse + 20ns","p")
+leg1.AddEntry(gr_EE_p17ns, "EE pulse + 17ns","p")
 leg1.Draw("same")
 c11.Update()
 c11.SaveAs("../FIGs/c11.pdf")
